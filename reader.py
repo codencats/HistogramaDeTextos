@@ -1,4 +1,6 @@
 import os
+from matplotlib.pylab import hist, show
+
 palabras = []
 contador = []
 os.chdir("Textos")
@@ -38,6 +40,9 @@ out.write(str(contador))
 out.close()
 f.close()
 
+#Graficación
+hist(contador,len(contador),max(contador))
+show()
 
 #for i in range(len(palabras)):
 #    print (palabras[i]+": "+str(contador[i]))
