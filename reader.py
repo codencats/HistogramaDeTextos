@@ -19,16 +19,26 @@ f = open(list[sel])
 ext = list[sel].split(".")
 if ext[1] != "txt":
     print "No se puede abrir el archivo..."
+    f.close()
     exit()
 lines = f.readlines()
 for l in lines:
     words = l.split()
     for w in words:
+        w=w.lower()
         if w in palabras:
             i = palabras.index(w)
             contador[i] = contador[i]+1
         else:
             palabras.append(str(w))
             contador.append(1)
-for i in range(len(palabras)):
-    print (palabras[i]+": "+str(contador[i]))
+os.chdir("..")
+out = open("out.txt","w")
+out.write(str(contador))
+out.close()
+f.close()
+
+
+#for i in range(len(palabras)):
+#    print (palabras[i]+": "+str(contador[i]))
+#print palabras[contador.index(max(contador))]+": "+str(max(contador))
